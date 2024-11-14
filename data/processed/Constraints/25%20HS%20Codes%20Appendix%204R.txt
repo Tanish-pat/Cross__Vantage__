@@ -1,0 +1,42 @@
+Revised rates for 25 export items (8-digit HS codes for Appendix 4R) as notified vide Notification No.70/2023
+dated 08.03.2024
+S.NO Tariff Item Description of Goods (*) Existing UQC Existing Revised Revised
+RODTEP (#) Value RoDTEP Value Cap
+Rate as % Cap (INR Rate as (Rs. Per
+age of FOB Per UQC) % age of UQC)
+FOB
+(1) (2) (3) (4) (5) (6) (7) (8)
+1 04081100 Dried 0.5% Kg 2.5% 12.0
+2 04081900 Other 0.5% Kg 2.5% 5.5
+3 04089100 Dried 0.5% Kg 2.5% 12.0
+4 04089900 Other 0.5% Kg 2.5% 2.0
+5 18040000 COCOA BUTTER, FAT AND OIL 1.0% Kg 2.5% 9.7
+6 28020010 Sublimed sulphur 0.8% Kg 1.2%
+7 28183000 Aluminium hydroxide 0.8% Kg 2.0% 0.5
+8 29157040 H.C.O.Fatty acid (including 12-hydroxy stearic acid) 0.8% Kg 1.0%
+9 29157050 D.C.O. Fatty acid 0.8% Kg 1.0%
+10 29157090 Other 0.8% Kg 1.0%
+11 29161400 Esters of methacrylic acid 0.8% Kg 1.2%
+12 33019014 Turmeric oleoresins 0.8% Kg 1.0%
+13 33019022 Capsicum oleoresins 0.8% Kg 1.4%
+14 33019029 Oleoresins of spices not elsewhere specified or 0.8% Kg 1.4%
+included
+15 35021100 Dried 0.5% Kg 2.5% 12
+16 35021900 Other 0.5% Kg 2.5% 3
+17 38237090 Other 0.8% kg 1.0%
+18 39046990 Other 1.4% kg 2.5% 27
+19 53050010 Coir bristles fibre, coir mattress fibre, coir short fibre, 1.0% Kg 2.5% 1.0
+coir bit fibre, decoriticated coir fibre
+20 53050040 Coir pith, processed in value added form like 1.0% Kg 2.5% 1.0
+briquette, coins, neo disc, grow bags, organic manure
+and in loose form for use in horticulture or agriculture
+21 68022310 Granite blocks or tiles 1.0% Kg 1.8% 1
+22 68022390 Other 1.0% Kg 1.8% 1
+23 90015000 Spectacle lenses of other materials 0.5% u 1.0%
+24 90159000 Parts and accessories 0.5% Kg 0.8%
+25 90183930 Cannulae 0.5% u 1.0%
+Note -
+(1) *: The "Description of Goods" referred in column (3) of this Schedule is the same Description of Goods as given to the respective
+tariff item in the First Schedule to the Customs Tariff Act, 1975 (as amended).
+(2) #: The "UQC" referred in column (5) of this Schedule is the same UQC as given to the respective tariff item in the First Schedule to
+the Customs Tariff Act, 1975 (as amended).
