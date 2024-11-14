@@ -1,2 +1,6 @@
-flask
+beautifulsoup4
+pdfplumber
+pathlib
+asyncio
+infinity-emb
 requests
