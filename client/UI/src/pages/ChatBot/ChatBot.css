@@ -1,0 +1,87 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .app {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .sidebar {
+    width: 20%;
+    background: #040c18;
+    padding: 10px;
+    border-right: 1px solid #ddd;
+  }
+  
+  .sidebar button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar li {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .sidebar li:hover {
+    background: #ddd;
+  }
+  
+  .chat-window {
+    width: 80%;
+    background: #001233;
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  .messages {
+    flex: 1;
+    padding: 10px;
+    background: #001233;
+    overflow-y: auto;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .message {
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .message.user {
+    background: #d1e7dd;
+    align-self: flex-end;
+  }
+  
+  form {
+    display: flex;
+    padding: 10px;
+  }
+  
+  form input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  form button {
+    padding: 10px;
+    border: none;
+    background: #023047;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
