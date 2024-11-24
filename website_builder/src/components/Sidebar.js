@@ -4,11 +4,17 @@ import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import { SidebarRoot, SidebarTitle, SidebarList, SidebarListItem, SidebarTextField, SidebarButton, SidebarDivider } from './JointStyles';
 
-const Sidebar = ({ boxes, handleUpdateContent, handleDestroyBox, handleUpdateType, handleCSVUpload }) => {
+const Sidebar = ({ boxes, handleUpdateContentForText, handleUpdateContentForTable, handleDestroyBox, handleUpdateType, handleCSVUpload }) => {
+
+
     const handleFileUpload = (e) => {
-        const file = e.target.files[0];
+        const file = e.target.files ? e.target.files[0] : null;
         if (file) {
-            handleCSVUpload(file); // Pass the file directly to the handler
+            const boxIndex = boxes.findIndex((box) => box.type === 'table')
+            console.log('boxIndex', boxIndex);
+            handleCSVUpload(file, (parsedData) => {
+                handleUpdateContentForTable(boxIndex, parsedData);
+            });
         }
     };
 
@@ -37,7 +43,7 @@ const Sidebar = ({ boxes, handleUpdateContent, handleDestroyBox, handleUpdateTyp
                             <SidebarTextField
                                 label="Content"
                                 value={box.content}
-                                onChange={(e) => handleUpdateContent(index, e.target.value)}
+                                onChange={(e) => handleUpdateContentForText(index, e.target.value)}
                                 fullWidth
                                 size="medium"
                                 disabled={box.type === 'table'}
@@ -51,15 +57,16 @@ const Sidebar = ({ boxes, handleUpdateContent, handleDestroyBox, handleUpdateTyp
                                 Delete Box
                             </SidebarButton>
                             {box.type === 'table' && (
-                                <div>
+                                <SidebarButton>
                                     <input
                                         type="file"
                                         accept=".csv"
                                         onChange={handleFileUpload}
-                                        style={{ marginTop: '10px' }}
                                     />
-                                </div>
+                                    Upload CSV
+                                </SidebarButton>
                             )}
+
                         </SidebarListItem>
                         <SidebarDivider />
                     </React.Fragment>

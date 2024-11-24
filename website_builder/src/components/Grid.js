@@ -1,26 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
-import Papa from 'papaparse'; // A library for parsing CSV files
 
-const Grid = ({ ROWS, COLS, CELL_DIMENSION, boxes, selectedRegion, handleCellClick, startCell }) => {
-    const [csvData, setCsvData] = useState([]);
-
-    // Function to handle file upload and update state with parsed CSV data
-    const handleFileUpload = (e) => {
-        const file = e.target.files ? e.target.files[0] : null;  // Ensure files is not undefined
-        if (file) {
-            handleCSVUpload(file, (parsedData) => {
-                setCsvData(parsedData); // Store parsed CSV data in state
-            });
-        }
-    };
+const Grid = ({ boxes, ROWS, COLS, CELL_ROW_DIMENSION, CELL_COL_DIMENSION, firstClick, selectedRegion, handleCellClick, startCell }) => {
 
     return (
         <Box
             sx={{
                 display: 'grid',
-                gridTemplateColumns: `repeat(${COLS}, ${CELL_DIMENSION}px)`,
-                gridTemplateRows: `repeat(${ROWS}, ${CELL_DIMENSION}px)`,
+                gridTemplateColumns: `repeat(${COLS}, ${CELL_COL_DIMENSION}px)`,
+                gridTemplateRows: `repeat(${ROWS}, ${CELL_ROW_DIMENSION}px)`,
                 gap: 1,
                 position: 'relative',
             }}
@@ -29,19 +17,12 @@ const Grid = ({ ROWS, COLS, CELL_DIMENSION, boxes, selectedRegion, handleCellCli
                 const row = Math.floor(i / COLS);
                 const col = i % COLS;
 
-                // const boxIndex = boxes.findIndex(
-                //     (box) =>
-                //         row >= box.startRow &&
-                //         row <= (box.type === 'table' ? box.startRow + (box.tableCells?.length || 0) - 1 : box.endRow) &&
-                //         col >= box.startCol &&
-                //         col <= (box.type === 'table' ? box.startCol + (box.tableCells?.[0]?.length || 0) - 1 : box.endCol)
-                // );
                 const boxIndex = boxes.findIndex(
                     (box) =>
                         row >= box.startRow &&
-                        row <= box.endRow &&
+                        row <= (box.type === 'table' ? box.startRow + (box.tableCells?.length || 0) - 1 : box.endRow) &&
                         col >= box.startCol &&
-                        col <= box.endCol
+                        col <= (box.type === 'table' ? box.startCol + (box.tableCells?.[0]?.length || 0) - 1 : box.endCol)
                 );
 
                 const isSelected = selectedRegion.some(
@@ -60,8 +41,8 @@ const Grid = ({ ROWS, COLS, CELL_DIMENSION, boxes, selectedRegion, handleCellCli
                             <Box
                                 key={`box-${boxIndex}-cell-${row}-${col}`}
                                 sx={{
-                                    width: CELL_DIMENSION,
-                                    height: CELL_DIMENSION,
+                                    width: CELL_COL_DIMENSION,
+                                    height: CELL_ROW_DIMENSION,
                                     backgroundColor: 'lightyellow',
                                     border: '1px solid black',
                                     display: 'flex',
@@ -69,9 +50,9 @@ const Grid = ({ ROWS, COLS, CELL_DIMENSION, boxes, selectedRegion, handleCellCli
                                     justifyContent: 'center',
                                     fontSize: '12px',
                                     color: '#333',
-                                }}
-                            >
+                                }}>
                                 {tableCell?.content || ''}
+
                             </Box>
                         );
                     }
@@ -105,15 +86,15 @@ const Grid = ({ ROWS, COLS, CELL_DIMENSION, boxes, selectedRegion, handleCellCli
                 }
 
                 // Check if there's CSV data for this grid cell
-                const cellContent = csvData[row] && csvData[row][col] ? csvData[row][col] : '';
+                // const cellContent = csvData[row] && csvData[row][col] ? csvData[row][col] : '';
 
                 return (
                     <Box
                         key={i}
                         onClick={() => handleCellClick(row, col)}
                         sx={{
-                            width: CELL_DIMENSION,
-                            height: CELL_DIMENSION,
+                            width: CELL_COL_DIMENSION,
+                            height: CELL_ROW_DIMENSION,
                             backgroundColor: isSelected ? 'lightgreen' : 'white',
                             border: isSelected ? '2px dashed green' : '1px solid black',
                         }}
@@ -128,27 +109,17 @@ const Grid = ({ ROWS, COLS, CELL_DIMENSION, boxes, selectedRegion, handleCellCli
                                 wordBreak: 'break-word',
                             }}
                         >
-                            {cellContent}
+                            {/* {cellContent} */}
                         </Box>
                     </Box>
                 );
             })}
-            <input type="file" accept=".csv" onChange={handleFileUpload} style={{ marginTop: '10px' }} />
+            {/* <input type="file" accept=".csv" onChange={handleFileUpload} style={{ marginTop: '10px' }} /> */}
         </Box>
     );
 };
 
-// Function to handle CSV upload and parse
-const handleCSVUpload = (file, callback) => {
-    Papa.parse(file, {
-        complete: (result) => {
-            const parsedData = result.data; // CSV data
-            console.log('Parsed Data:', parsedData);
-            callback(parsedData); // Return parsed data to the callback
-        },
-        header: false, // If the CSV does not contain headers, set this to false
-    });
-};
+
 
 export default Grid;
 

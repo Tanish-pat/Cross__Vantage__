@@ -5,6 +5,7 @@ import Grid from './Grid.js';
 import Header from './Header.js';
 import Sidebar from './Sidebar.js';
 import TextField from '@mui/material/TextField';
+import Papa from 'papaparse'; // A library for parsing CSV files
 
 const WebBuilderPage = () => {
     const [boxes, setBoxes] = useState([]);
@@ -14,70 +15,54 @@ const WebBuilderPage = () => {
 
     const [rows, setRows] = useState(8);
     const [cols, setCols] = useState(20);
-    const [cellDimension, setCellDimension] = useState(30);
+    const [cellRowDimension, setCellRowDimension] = useState(30);
+    const [cellColDimension, setCellColDimension] = useState(30);
 
-    const getJsonFromCSV = (csv) => {
-        const lines = csv.split('\n');
-        const result = [];
-        const headers = lines[0].split(',');
-
-        // Skip empty lines and validate the CSV
-        for (let i = 1; i < lines.length; i++) {
-            const currentLine = lines[i].trim();
-            if (!currentLine) continue; // Skip empty lines
-            const obj = {};
-            const currentline = currentLine.split(',');
-
-            if (currentline.length !== headers.length) {
-                console.error('CSV row does not match header length.');
-                return []; // Return empty array if there's an issue
-            }
-
-            for (let j = 0; j < headers.length; j++) {
-                obj[headers[j]] = currentline[j];
-            }
-            result.push(obj);
-        }
-        return result;
+    const uploadCSV = (file, callback) => {
+        Papa.parse(file, {
+            complete: (result) => {
+                const parsedData = result.data;
+                console.log('Parsed Data:', parsedData);
+                callback(parsedData);
+            },
+            header: false,
+        });
     };
 
-    const uploadCSV = (event) => {
-        const file = event.target.files[0];
-        const reader = new FileReader();
+    const handleUpdateContentForTable = (boxIndex, csvJson) => {
+        try {
+            const numRows = csvJson.length;
+            const numCols = csvJson[0].length;
 
-        reader.onload = (e) => {
-            const csv = e.target.result;
-            const json = getJsonFromCSV(csv);
-            console.log(json);
-            if (json.length) {
-                handleUpdateContentForTable(startCell, json);
-            }
-        };
+            const updatedBox = {
+                ...boxes[boxIndex],
+                startRow: boxes[boxIndex].startRow,
+                endRow: boxes[boxIndex].startRow + numRows - 1,
+                startCol: boxes[boxIndex].startCol,
+                endCol: boxes[boxIndex].startCol + numCols - 1,
+                type: 'table',
+                tableCells: csvJson.map((row, rowIndex) =>
+                    row.map((content, colIndex) => ({
+                        rowId: boxes[boxIndex].startRow + rowIndex,
+                        colId: boxes[boxIndex].startCol + colIndex,
+                        content,
+                    }))
+                ).flat(),
+            };
 
-        reader.readAsText(file); // Asynchronous read
-    };
+            console.log("Updated Box:", updatedBox);
 
-    const handleUpdateContentForTable = (index, csvJson) => {
-        if (!index) return; // Prevent if there's no starting cell selected
-
-        const tableCells = [];
-        csvJson.forEach((row, rowIndex) => {
-            Object.values(row).forEach((content, colIndex) => {
-                tableCells.push({
-                    row: index.startRow + rowIndex,
-                    col: index.startCol + colIndex,
-                    content,
-                });
+            setBoxes((prevBoxes) => {
+                const newBoxes = [...prevBoxes];
+                newBoxes[boxIndex] = updatedBox;
+                return newBoxes;
             });
-        });
-
-        setBoxes((prevBoxes) => {
-            const newBoxes = [...prevBoxes];
-            newBoxes[index.startRow] = { ...newBoxes[index.startRow], tableCells };
-            return newBoxes;
-        });
-        console.log(tableCells);
+            console.log("Boxes:", boxes);
+        } catch (error) {
+            console.error('Error updating table content:', error);
+        }
     };
+
 
     const handleCellClick = (row, col) => {
         if (!startCell) {
@@ -95,7 +80,7 @@ const WebBuilderPage = () => {
                 startCol,
                 endCol,
                 content: '',
-                type: '',
+                type: 'text',
                 tableCells: [],
             };
 
@@ -124,10 +109,11 @@ const WebBuilderPage = () => {
         setBoxes((prev) => prev.filter((_, i) => i !== index));
     };
 
-    const handleUpdateContent = (index, content) => {
+    const handleUpdateContentForText = (index, content) => {
         setBoxes((prev) =>
             prev.map((box, i) => (i === index ? { ...box, content } : box))
         );
+        console.log("Content:", content);
     };
 
     const handleUpdateType = (index, type) => {
@@ -176,10 +162,18 @@ const WebBuilderPage = () => {
                     margin="normal"
                 />
                 <TextField
-                    label="Cell Dimension (px)"
+                    label="Cell Row Dimension (px)"
                     type="number"
-                    value={cellDimension}
-                    onChange={(e) => setCellDimension(parseInt(e.target.value))}
+                    value={cellRowDimension}
+                    onChange={(e) => setCellRowDimension(parseInt(e.target.value))}
+                    fullWidth
+                    margin="normal"
+                />
+                <TextField
+                    label="Cell Col Dimension (px)"
+                    type="number"
+                    value={cellColDimension}
+                    onChange={(e) => setCellColDimension(parseInt(e.target.value))}
                     fullWidth
                     margin="normal"
                 />
@@ -188,10 +182,11 @@ const WebBuilderPage = () => {
                 <Grid2 item xs={9}>
                     <Header />
                     <Grid
+                        boxes={boxes}
                         ROWS={rows}
                         COLS={cols}
-                        CELL_DIMENSION={cellDimension}
-                        boxes={boxes}
+                        CELL_ROW_DIMENSION={cellRowDimension}
+                        CELL_COL_DIMENSION={cellColDimension}
                         firstClick={firstClick}
                         selectedRegion={selectedRegion}
                         handleCellClick={handleCellClick}
@@ -201,7 +196,8 @@ const WebBuilderPage = () => {
                 <Grid2 item xs={3}>
                     <Sidebar
                         boxes={boxes}
-                        handleUpdateContent={handleUpdateContent}
+                        handleUpdateContentForText={handleUpdateContentForText}
+                        handleUpdateContentForTable={handleUpdateContentForTable}
                         handleDestroyBox={handleDestroyBox}
                         handleUpdateType={handleUpdateType}
                         handleCSVUpload={uploadCSV}
