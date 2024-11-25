@@ -19,8 +19,8 @@ const Navbar = () => {
         </div>
       </div>
       <div className="gpt3__navbar-sign">
-        <p>Sign in</p>
-        <button type="button">Sign up</button>
+        <p><a href='https://loginsmbhav.netlify.app/' >Sign in</a></p>
+        <button type="button"><a href='https://registersmbhav.netlify.app/' >Sign up</a></button>
         <button type="button" class='ml-3'><a href='https://chatbotsmbhav.netlify.app/'>ChatBot</a></button>
       </div>
       <div className="gpt3__navbar-menu">
