@@ -1,0 +1,78 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0px;
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  
+  .container {
+    max-width: 95%;
+    margin: 0 auto;
+  }
+  
+  /* Section: Guidelines */
+  .guidelines {
+    margin-bottom: 20px;
+  }
+  
+  .guidelines button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .guidelines button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Section: Rates Table */
+  .rates table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .rates th,
+  .rates td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .rates th {
+    background-color: #ffe5e5;
+    font-weight: bold;
+  }
+  
+  .rates tbody tr {
+    background-color: #fff;
+  }
+  
+  .rates tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .rates tbody tr.new-row {
+    background-color: #f9f9f9;
+  }
+  
+  .rates a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .rates a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Highlight "NEW!" */
+  .new-tag {
+    color: red;
+    font-weight: bold;
+  }
+  
