@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid-Based Website Builder</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Website Builder</h1>
+    <div id="grid"></div>
+
+    <div class="controls">
+        <label for="elementType">Element Type:</label>
+        <select id="elementType">
+            <option value="design">Design</option>
+            <option value="table">Table</option>
+            <option value="text">Text</option>
+            <option value="notice">Notice</option>
+        </select>
+        <button id="assignElement">Assign Element</button>
+    </div>
+
+    <div class="content-input">
+        <label for="content">Content:</label>
+        <input type="text" id="content" placeholder="Enter text or choose a file">
+        <input type="file" id="fileInput" style="display: none;">
+        <button id="saveContent">Save Content</button>
+    </div>
+
+    <button id="exportJSON">Export JSON</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
