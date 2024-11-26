@@ -1,5 +1,5 @@
-# 🚀 **IndusChain**  
-### _Where IoT, Blockchain, and AI Converge for Smart Solutions_  
+# 🚀 **Trade__Wise__**  
+### _Launching Your Product Over the Ocean_
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) ![Build Status](https://img.shields.io/badge/Build-Stable-green.svg)  
 
@@ -15,10 +15,6 @@
 7. [Screenshots](#screenshots)  
 8. [API Documentation](#api-documentation)  
 9. [Future Improvements](#future-improvements)  
-10. [Contributing](#contributing)  
-11. [License](#license)  
-12. [Contact Us](#contact-us)  
-
 ---
 
 ## 🌍 **Project Overview**  
@@ -59,6 +55,7 @@ TradeWise uses Large Language Models and web scrapers to simplify all the proces
    ```bash
    git clone git@github.com:Tanish-pat/Cross__Vantage__.git
    cd Cross__Vantage__
+
    ```
 
 2. **Install Backend Dependencies**  
@@ -79,40 +76,50 @@ TradeWise uses Large Language Models and web scrapers to simplify all the proces
 
 
 ## 🖼 **Preview**  
-### 1. Web Portal – Dashboard  
+### 1. Landing Page
 ![Dashboard](./assets/dashboard.png)  
 
-### 2. Predictive Maintenance Alerts  
+### 2. Chat UI
 ![Alerts](./assets/alerts.png)  
 
-### 3. CargoChain Mobile App  
+### 3. Website Builder 
 ![CargoChain App](mobile_app.png)  
+
+### 4. Standardised RoDTEP - built by the website Builder
+
 
 ---
 
 ## 📑 **API Documentation**  
-Here are the key API endpoints available for developers:  
+Here are the key API endpoints available for developers to further this solution:-
 
 - **POST /api/register**: Signup on the website 
 - **POST /api/login**: Login on the website
 - **GET /api/protected**: Protected route on the website
-- **POST /api/plants/create**: Create a plant
-- **POST /api/plants/add-manager**: add a manager to a plant
-- **POST /api/plants/add-engineer**: add an engineer to a plant
-- **GET /api/plants/details/:plantId**: get plant details
+- **GET /api/req?query={query}** : Send prompt to our LLM ( AWS Bedrock -  Knowledge Base )
+- **GET /api/list** : Get list of all foundation models Available ( what we have access to ) in Bedrock
+- **GET /api/healthCheck** : Get status of all the AWS service running ( when is the time out for AWS Lambda, how much of s3 storage we ahve exhausted )
 
 ---
 
 ## 🚀 **Future Improvements**  
-- **Detailed energy report** with specific machine data, and energy losses. 
-- **Higher hierarchial management** in company establishments and database with better access control and multi plant management system
-- **Enhanced visualization dashboards** with data analytics tools.  
-- **Multi-blockchain compatibility** (e.g., Polygon, Binance Smart Chain).
 
+1. **Add more country endpoints** for broader coverage.
+2. **Strengthen the data pipeline** for diverse formats.
+3. Integrate **current affairs and news sources** into RAG.
+4. **Optimize AWS costs** using Spot Instances and audits.
+5. **Improve UI** for better accessibility.
+6. Add **flexible website builder** features.
+7. Use **ML for data standardization**.
+8. Ensure **data privacy** with global compliance.
+9. Provide **advanced analytics** and insights.
+10. Expand **localization** features.
+11. **Scale infrastructure** with microservices.
+12. Introduce **collaboration tools** for SMBs.
 ---
 
 ## 🤝 **Contributing**  
-We welcome contributions to make IndusChain better!  
+We welcome contributions to make Trade Wise better !  
 
 1. **Fork the repository**  
 2. **Create a new branch**  
@@ -138,5 +145,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 **Contact Us**  
 For queries or support, feel free to reach out at:  
-- **Email**: niranjan.gopal@iiitb.ac.in, Tanish.Pathania@iiitb.ac.in
+- **Email**: Niranjan.gopal@iiitb.ac.in, tanish.pathania@iiitb.ac.in, siddharth.vikram@iiitb.ac.in
 - **Linkedin**:[Siddharth Vikram](https://www.linkedin.com/in/siddharth-vikram-523835219/)
