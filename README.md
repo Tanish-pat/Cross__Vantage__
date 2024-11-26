@@ -83,7 +83,7 @@ TradeWise uses Large Language Models and web scrapers to simplify all the proces
 ![ChatUI](./assets/ChatUI.png)  
 
 ### 3. Website Builder 
-![CargoChain App](mobile_app.png)  
+![websiteBuilder](./assets/website_builder.jpeg)  
 
 ### 4. Standardised RoDTEP - built by the website Builder
 ![rodtep](./assets/standardized_RoDTEP.png)
