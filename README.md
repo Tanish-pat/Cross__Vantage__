@@ -22,6 +22,10 @@ TradeWise is a platform to simplify cross border regulations, current approaches
 
 TradeWise uses Large Language Models and web scrapers to simplify all the process. TradeWise further proposes standard Export Compiance Services(ECS) 1.0 to help ease out the construction and improvement of future solutions of the same nature.
 
+Demo link - https://www.youtube.com/watch?v=SWAGcc7q3Jc
+Deployment link - https://tradewisesmbhav2024.netlify.app/
+Opinion of Industry professional - https://www.youtube.com/watch?v=dQwh7qPoTYM
+
 ---
 
 ## ✨ **Features**  
